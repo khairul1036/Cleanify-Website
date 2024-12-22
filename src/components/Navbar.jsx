@@ -17,9 +17,9 @@ const Navbar = () => {
           <li>
             <details>
               <summary>Dashboard</summary>
-              <ul className="bg-base-100 rounded-t-none p-2">
+              <ul className="bg-base-100 rounded-t-none p-2 w-48">
                 <li>
-                  <NavLink to={"/a"}>Link 1</NavLink>
+                  <NavLink to={"/add-service"}>Add Service</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/b"}>Link 2</NavLink>
