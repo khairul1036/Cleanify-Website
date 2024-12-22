@@ -7,6 +7,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddService from "../pages/AddService";
 import AllService from "../pages/AllService";
 import SingleServiceDetails from "../pages/SingleServiceDetails";
+import MyBooking from "../pages/MyBooking";
+import ManageServices from "../pages/ManageServices";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SingleServiceDetails/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-booking",
+        element: (
+          <PrivateRoute>
+            <MyBooking/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage-services",
+        element: (
+          <PrivateRoute>
+            <ManageServices/>
           </PrivateRoute>
         ),
       },
