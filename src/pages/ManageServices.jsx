@@ -23,8 +23,20 @@ const ManageServices = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.post(
+        `http://localhost:5000/delete-service/${id}`
+      );
+      toast.success("Service deleted!!");
+      fetchMyServices();
+    } catch (error) {
+      toast.error(error?.response?.data);
+    }
+  };
+
   return (
-    <section className="container px-4 mx-auto my-12">
+    <section className="container px-4 mx-auto pt-12">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">Manage Service</h2>
 
@@ -45,7 +57,7 @@ const ManageServices = () => {
                       className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>Title</span>
+                        <span>Image</span>
                       </div>
                     </th>
                     <th
@@ -53,7 +65,7 @@ const ManageServices = () => {
                       className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>Email</span>
+                        <span>Title</span>
                       </div>
                     </th>
 
@@ -61,7 +73,7 @@ const ManageServices = () => {
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
-                      <span>Booked At</span>
+                      <span>CreateAt</span>
                     </th>
 
                     <th
@@ -79,23 +91,25 @@ const ManageServices = () => {
                     >
                       Location
                     </th>
-
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
-                      Status
+                      Description
                     </th>
 
                     <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                      Actions
+                      Edit
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-200 ">
                   {myServices.length === 0 ? (
                     <tr>
-                      <td colSpan="6" className="text-center text-gray-500 py-5">
+                      <td
+                        colSpan="6"
+                        className="text-center text-gray-500 py-5"
+                      >
                         No Data Here
                       </td>
                     </tr>
@@ -104,6 +118,7 @@ const ManageServices = () => {
                       <ManageServicesRow
                         key={myService._id}
                         myService={myService}
+                        handleDelete={handleDelete}
                       />
                     ))
                   )}
