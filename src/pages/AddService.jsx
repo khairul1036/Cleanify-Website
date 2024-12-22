@@ -35,13 +35,13 @@ const AddService = () => {
       req_count: 0,
     };
     try {
-        await axios.post("http://localhost:5000/add-service", formData);
-        form.reset();
-        toast.success("Service added successfully");
-        // navigate("/my-posted-jobs");
-      } catch (error) {
-        toast.error(error?.response?.data);
-      }
+      await axios.post("http://localhost:5000/add-service", formData);
+      form.reset();
+      toast.success("Service added successfully");
+      // navigate("/my-posted-jobs");
+    } catch (error) {
+      toast.error(error?.response?.data);
+    }
   };
 
   return (
@@ -122,31 +122,46 @@ const AddService = () => {
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               />
             </div>
+            {/* photo url  */}
+            <div>
+              <label className="text-gray-700 " htmlFor="photoUrl">
+                Image URL
+              </label>
+              <input
+                id="photoUrl"
+                name="photoUrl"
+                type="text"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+              />
+            </div>
+            {/* service location  */}
+            <div className="flex flex-col gap-2 ">
+              <label className="text-gray-700 " htmlFor="location">
+                Area
+              </label>
+              <select
+                name="location"
+                id="location"
+                className="border p-2 rounded-md"
+              >
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Sylhet">Sylhet</option>
+                <option value="Chittagong">Chittagong</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Mymensingh">Mymensingh</option>
+                <option value="Comilla">Comilla</option>
+                <option value="Narayanganj">Narayanganj</option>
+                <option value="Bogra">Bogra</option>
+                <option value="Tangail">Tangail</option>
+                <option value="Jessore">Jessore</option>
+                <option value="Naogaon">Naogaon</option>
+              </select>
+            </div>
           </div>
-          {/* photo url  */}
-          <div>
-            <label className="text-gray-700 " htmlFor="photoUrl">
-              Image URL
-            </label>
-            <input
-              id="photoUrl"
-              name="photoUrl"
-              type="text"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
-            />
-          </div>
-          {/* service location  */}
-          <div>
-            <label className="text-gray-700 " htmlFor="location">
-              Service Area
-            </label>
-            <input
-              id="location"
-              name="location"
-              type="text"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
-            />
-          </div>
+
           {/* Description */}
           <div className="flex flex-col gap-2 mt-4">
             <label className="text-gray-700 " htmlFor="description">
