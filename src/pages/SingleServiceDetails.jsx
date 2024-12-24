@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,6 +12,7 @@ const SingleServiceDetails = () => {
   const [service, setService] = useState([]);
   const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate();
 
   // fetching single data
   useEffect(() => {
@@ -51,6 +52,7 @@ const SingleServiceDetails = () => {
     const instructions = form.instructions.value;
     const userAddress = form.address.value;
     const bookingData = {
+      title,
       userInfo: {
         name: user?.displayName,
         email: user?.email,
@@ -61,6 +63,7 @@ const SingleServiceDetails = () => {
       userAddress,
       price,
       location,
+      photoUrl,
       bookingAt: new Date(),
       serviceStatus: "pending",
     };
@@ -69,7 +72,7 @@ const SingleServiceDetails = () => {
       await axios.post("http://localhost:5000/booking-request", bookingData);
       form.reset();
       toast.success("Service booking request successfully");
-      // navigate("/my-posted-jobs");
+      navigate("/my-booking");
     } catch (error) {
       toast.error(error?.response?.data);
     }

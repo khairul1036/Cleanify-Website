@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 
 const ManageServices = () => {
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
   const [myServices, setMyServices] = useState([]);
   useEffect(() => {
     fetchMyServices();
@@ -19,7 +18,6 @@ const ManageServices = () => {
         `http://localhost:5000/my-service/${user?.email}`
       );
       setMyServices(data);
-      setStartDate(new Date(data.createDate))
     } catch (error) {
       toast.error(error.message);
     }
@@ -35,14 +33,14 @@ const ManageServices = () => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-      }).then(async (result) =>  {
+      }).then(async (result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "Deleted!",
             text: "Your service has been deleted.",
             icon: "success",
           });
-          const { data } =await axios.post(
+          const { data } = await axios.post(
             `http://localhost:5000/delete-service/${id}`
           );
           fetchMyServices();
@@ -137,7 +135,6 @@ const ManageServices = () => {
                         key={myService._id}
                         myService={myService}
                         handleDelete={handleDelete}
-                        startDate = {startDate}
                       />
                     ))
                   )}
