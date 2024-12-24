@@ -10,6 +10,7 @@ import SingleServiceDetails from "../pages/SingleServiceDetails";
 import MyBooking from "../pages/MyBooking";
 import ManageServices from "../pages/ManageServices";
 import UpdateService from "../pages/UpdateService";
+import ServiceToDo from "../pages/ServiceToDo";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateService/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/service-to-do",
+        element: (
+          <PrivateRoute>
+            <ServiceToDo/>
           </PrivateRoute>
         ),
       },

@@ -79,10 +79,13 @@ const Navbar = () => {
                   <NavLink to={"/add-service"}>Add Service</NavLink>
                 </li>
                 <li>
+                  <NavLink to={"/manage-services"}>Manage Services</NavLink>
+                </li>
+                <li>
                   <NavLink to={"/my-booking"}>Booked Service</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/manage-services"}>Manage Services</NavLink>
+                  <NavLink to={"/service-to-do"}>Service To-Do</NavLink>
                 </li>
               </ul>
             </details>

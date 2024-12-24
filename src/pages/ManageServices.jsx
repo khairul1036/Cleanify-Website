@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import ManageServicesRow from "../components/ManageServicesRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageServices = () => {
   const { user } = useAuth();
@@ -52,99 +53,104 @@ const ManageServices = () => {
   };
 
   return (
-    <section className="container px-4 mx-auto pt-12">
-      <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 ">Manage Service</h2>
+    <>
+      <Helmet>
+        <title>Manage Service</title>
+      </Helmet>
+      <section className="container px-4 mx-auto pt-12">
+        <div className="flex items-center gap-x-3">
+          <h2 className="text-lg font-medium text-gray-800 ">Manage Service</h2>
 
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-          {myServices.length} Service
-        </span>
-      </div>
+          <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
+            {myServices.length} Service
+          </span>
+        </div>
 
-      <div className="flex flex-col mt-6">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <div className="flex items-center gap-x-3">
-                        <span>Image</span>
-                      </div>
-                    </th>
-                    <th
-                      scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <div className="flex items-center gap-x-3">
-                        <span>Title</span>
-                      </div>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <span>CreateAt</span>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <button className="flex items-center gap-x-2">
-                        <span>Price</span>
-                      </button>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Location
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Description
-                    </th>
-
-                    <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                      Edit
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200 ">
-                  {myServices.length === 0 ? (
+        <div className="flex flex-col mt-6">
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden border border-gray-200  md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
                     <tr>
-                      <td
-                        colSpan="6"
-                        className="text-center text-gray-500 py-5"
+                      <th
+                        scope="col"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
                       >
-                        No Data Here
-                      </td>
+                        <div className="flex items-center gap-x-3">
+                          <span>Image</span>
+                        </div>
+                      </th>
+                      <th
+                        scope="col"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        <div className="flex items-center gap-x-3">
+                          <span>Title</span>
+                        </div>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        <span>CreateAt</span>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        <button className="flex items-center gap-x-2">
+                          <span>Price</span>
+                        </button>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Location
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Description
+                      </th>
+
+                      <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                        Edit
+                      </th>
                     </tr>
-                  ) : (
-                    myServices.map((myService) => (
-                      <ManageServicesRow
-                        key={myService._id}
-                        myService={myService}
-                        handleDelete={handleDelete}
-                      />
-                    ))
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200 ">
+                    {myServices.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan="6"
+                          className="text-center text-gray-500 py-5"
+                        >
+                          No Data Here
+                        </td>
+                      </tr>
+                    ) : (
+                      myServices.map((myService) => (
+                        <ManageServicesRow
+                          key={myService._id}
+                          myService={myService}
+                          handleDelete={handleDelete}
+                        />
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
