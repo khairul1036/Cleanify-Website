@@ -6,19 +6,17 @@ import { Helmet } from "react-helmet-async";
 
 const AllService = () => {
   const [services, setServices] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchAllService();
-  }, []);
-
-  const fetchAllService = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:5000/services");
+    const fetchAllService = async () => {
+      const { data } = await axios.get(
+        `http://localhost:5000/services?search=${search}`
+      );
       setServices(data);
-    } catch (error) {
-      toast.error(error?.response?.data);
-    }
-  };
+    };
+    fetchAllService();
+  }, [search]);
 
   return (
     <>
@@ -34,6 +32,7 @@ const AllService = () => {
                   className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
                   type="text"
                   name="search"
+                  onChange={(e) => setSearch(e.target.value)}
                   placeholder="Enter Job Title"
                   aria-label="Enter Job Title"
                 />
@@ -43,23 +42,15 @@ const AllService = () => {
                 </button>
               </div>
             </form>
-            <div>
-              <select
-                name="category"
-                id="category"
-                className="border p-4 rounded-md"
-              >
-                <option value="">Sort By Deadline</option>
-                <option value="dsc">Descending Order</option>
-                <option value="asc">Ascending Order</option>
-              </select>
-            </div>
-            <button className="btn">Reset</button>
           </div>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {services.map((service) => (
-              <ServiceCard key={service._id} service={service} />
-            ))}
+            {services.length === 0 ? (
+              <p>No Data</p>
+            ) : (
+              services.map((service) => (
+                <ServiceCard key={service._id} service={service} />
+              ))
+            )}
           </div>
         </div>
       </div>
