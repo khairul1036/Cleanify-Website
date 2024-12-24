@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import MyBookedTableRow from "../components/MyBookedTableRow";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyBooking = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
   const [myBookings, setMyBooking] = useState([]);
 
@@ -15,8 +17,8 @@ const MyBooking = () => {
 
   const fetchMyBooking = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/my-booking/${user?.email}`
+      const { data } = await axiosSecure.get(
+        `/my-booking/${user?.email}`
       );
       setMyBooking(data);
     } catch (error) {

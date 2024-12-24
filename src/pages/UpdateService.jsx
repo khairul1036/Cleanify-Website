@@ -6,8 +6,10 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateService = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -21,7 +23,7 @@ const UpdateService = () => {
 
   const fetchAllService = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/services/${id}`);
+      const { data } = await axiosSecure.get(`/services/${id}`);
       setService(data);
       setStartDate(new Date(data.createDate));
     } catch (error) {
@@ -57,7 +59,7 @@ const UpdateService = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/update-service/${id}`, formData);
+      await axiosSecure.put(`/update-service/${id}`, formData);
       form.reset();
       toast.success("Data Updated Successfully!!!");
       navigate("/manage-services");

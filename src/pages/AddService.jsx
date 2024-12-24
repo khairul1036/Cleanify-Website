@@ -6,8 +6,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddService = () => {
+  const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const AddService = () => {
       req_count: 0,
     };
     try {
-      await axios.post("http://localhost:5000/add-service", formData);
+      await axiosSecure.post("/add-service", formData);
       form.reset();
       toast.success("Service added successfully");
       navigate("/manage-services");

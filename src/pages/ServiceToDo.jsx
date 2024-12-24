@@ -4,8 +4,10 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ServiceToDoRow from "../components/ServiceToDoRow";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceToDo = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [bookings, setBooking] = useState([]);
 
@@ -15,8 +17,8 @@ const ServiceToDo = () => {
 
   const fetchBooking = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/my-booking/${user?.email}?provider=true`
+      const { data } = await axiosSecure.get(
+        `my-booking/${user?.email}?provider=true`
       );
       setBooking(data);
     } catch (error) {
@@ -31,8 +33,8 @@ const ServiceToDo = () => {
     //     return toast.error('Not Allowed')
 
     try {
-      const { data } = await axios.patch(
-        `http://localhost:5000/booked-status-update/${id}`,
+      const { data } = await axiosSecure.patch(
+        `/booked-status-update/${id}`,
         { serviceStatus }
       );
       console.log(data);

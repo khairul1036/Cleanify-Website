@@ -5,8 +5,10 @@ import useAuth from "../hooks/useAuth";
 import ManageServicesRow from "../components/ManageServicesRow";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageServices = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [myServices, setMyServices] = useState([]);
   useEffect(() => {
@@ -15,9 +17,7 @@ const ManageServices = () => {
 
   const fetchMyServices = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/my-service/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/my-service/${user?.email}`);
       setMyServices(data);
     } catch (error) {
       toast.error(error.message);
@@ -41,8 +41,8 @@ const ManageServices = () => {
             text: "Your service has been deleted.",
             icon: "success",
           });
-          const { data } = await axios.post(
-            `http://localhost:5000/delete-service/${id}`
+          const { data } = await axiosSecure.post(
+            `/delete-service/${id}`
           );
           fetchMyServices();
         }

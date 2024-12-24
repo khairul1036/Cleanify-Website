@@ -5,8 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const SingleServiceDetails = () => {
+  const axiosSecure = useAxiosSecure()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   const [service, setService] = useState([]);
@@ -21,7 +23,7 @@ const SingleServiceDetails = () => {
 
   const fetchAllService = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/services/${id}`);
+      const { data } = await axiosSecure.get(`/services/${id}`);
       setService(data);
     } catch (error) {
       toast.error(error?.response?.data);
@@ -69,7 +71,7 @@ const SingleServiceDetails = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/booking-request", bookingData);
+      await axiosSecure.post("/booking-request", bookingData);
       form.reset();
       toast.success("Service booking request successfully");
       navigate("/my-booking");

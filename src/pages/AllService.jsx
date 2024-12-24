@@ -3,15 +3,17 @@ import ServiceCard from "../components/ServiceCard";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllService = () => {
+  const axiosSecure = useAxiosSecure()
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchAllService = async () => {
-      const { data } = await axios.get(
-        `http://localhost:5000/services?search=${search}`
+      const { data } = await axiosSecure.get(
+        `/services?search=${search}`
       );
       setServices(data);
     };
