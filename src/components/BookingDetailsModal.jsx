@@ -20,7 +20,7 @@ const BookingDetailsModal = ({ booking, isOpen, closeModal }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-600 bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-1/2">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold">Booking Details</h2>
+          <h2 className="text-xl font-bold">Booked Details</h2>
           <button
             onClick={closeModal}
             className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"

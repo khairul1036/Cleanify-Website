@@ -68,15 +68,14 @@ const MyBookedTableRow = ({ myBooked }) => {
           >
             <FaEye className="text-2xl" />
           </button>
+          {/* Modal with full booking details */}
+          <BookingDetailsModal
+            booking={myBooked}
+            isOpen={isModalOpen}
+            closeModal={closeModal}
+          />
         </td>
       </tr>
-
-      {/* Modal with full booking details */}
-      <BookingDetailsModal
-        booking={myBooked}
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-      />
     </>
   );
 };

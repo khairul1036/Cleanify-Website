@@ -65,7 +65,7 @@ const SingleServiceDetails = () => {
       location,
       photoUrl,
       bookingAt: new Date(),
-      serviceStatus: "pending",
+      serviceStatus: "Pending",
     };
 
     try {

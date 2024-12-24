@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet-async";
 
 const MyBooking = () => {
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
   const [myBookings, setMyBooking] = useState([]);
 
   useEffect(() => {
