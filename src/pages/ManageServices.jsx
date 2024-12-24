@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import ManageServicesRow from "../components/ManageServicesRow";
+import Swal from "sweetalert2";
 
 const ManageServices = () => {
   const { user } = useAuth();
-
+  const [startDate, setStartDate] = useState(new Date());
   const [myServices, setMyServices] = useState([]);
   useEffect(() => {
     fetchMyServices();
@@ -18,18 +19,35 @@ const ManageServices = () => {
         `http://localhost:5000/my-service/${user?.email}`
       );
       setMyServices(data);
+      setStartDate(new Date(data.createDate))
     } catch (error) {
-      toast.error(error?.response?.data);
+      toast.error(error.message);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      const { data } = await axios.post(
-        `http://localhost:5000/delete-service/${id}`
-      );
-      toast.success("Service deleted!!");
-      fetchMyServices();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) =>  {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your service has been deleted.",
+            icon: "success",
+          });
+          const { data } =await axios.post(
+            `http://localhost:5000/delete-service/${id}`
+          );
+          fetchMyServices();
+        }
+      });
     } catch (error) {
       toast.error(error?.response?.data);
     }
@@ -119,6 +137,7 @@ const ManageServices = () => {
                         key={myService._id}
                         myService={myService}
                         handleDelete={handleDelete}
+                        startDate = {startDate}
                       />
                     ))
                   )}

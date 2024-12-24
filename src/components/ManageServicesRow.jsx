@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ManageServicesRow = ({ myService, handleDelete }) => {
+const ManageServicesRow = ({ myService, handleDelete, startDate }) => {
   const {
     _id,
     provider,
@@ -13,6 +13,7 @@ const ManageServicesRow = ({ myService, handleDelete }) => {
     description,
     req_count,
   } = myService;
+
   return (
     <tr>
       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
@@ -34,11 +35,14 @@ const ManageServicesRow = ({ myService, handleDelete }) => {
         {location}
       </td>
       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-        {description.substring(1,20)}...
+        {description.substring(0, 20)}...
       </td>
       <td className="px-4 py-4 text-sm whitespace-nowrap">
         <div className="flex items-center gap-x-6">
-          <button onClick={()=> handleDelete(_id)} className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none">
+          <button
+            onClick={() => handleDelete(_id)}
+            className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
