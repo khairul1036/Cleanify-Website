@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Carousel from "../components/Carousel";
 import AboutUs from "../components/AboutUs";
 import PopularServices from "../components/PopularServices";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Carousel />
       <AboutUs />
       <PopularServices/>
+      <WhyChooseUs/>
     </>
   );
 };
