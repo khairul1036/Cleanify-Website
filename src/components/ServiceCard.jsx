@@ -14,7 +14,7 @@ const ServiceCard = ({ service }) => {
   } = service;
 
   return (
-    <div className="md:flex justify-between items-center gap-10 shadow-md p-5 rounded-lg border dark:border-gray-400">
+    <div className="md:flex justify-between items-center gap-10 shadow-md p-5 text-gray-700 dark:text-gray-200 rounded-lg border dark:border-gray-700 dark:bg-gray-800">
       {/* Service Image */}
       <div className="flex flex-col md:flex-row">
         <img
@@ -42,18 +42,20 @@ const ServiceCard = ({ service }) => {
             {/* Service Provider Name */}
             <div>
               <p className="font-medium">{provider?.name}</p>
-              <p className="text-sm">Area: <span className="font-bold">{location}</span></p>
+              <p className="text-sm">
+                Area: <span className="font-bold">{location}</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-row md:flex-col justify-between items-end">
+      <div className="flex flex-row md:flex-col justify-between items-center md:items-end">
         {/* Service Price */}
         <p className="mt-4 text-2xl font-semibold">{`$${price}`}</p>
         {/* ViewDetail Button */}
         <Link to={`/services/${_id}`}>
-          <button className="btn mt-4 text-sm">View Detail</button>
+          <button className="btn border-none bg-blue-600 text-white hover:bg-blue-500 mt-4 text-sm">View Detail</button>
         </Link>
       </div>
     </div>

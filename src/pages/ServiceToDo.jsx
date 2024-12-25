@@ -33,10 +33,9 @@ const ServiceToDo = () => {
     //     return toast.error('Not Allowed')
 
     try {
-      const { data } = await axiosSecure.patch(
-        `/booked-status-update/${id}`,
-        { serviceStatus }
-      );
+      const { data } = await axiosSecure.patch(`/booked-status-update/${id}`, {
+        serviceStatus,
+      });
       console.log(data);
       toast.success(`Status Changed To ${serviceStatus}`);
       fetchBooking();
@@ -53,7 +52,7 @@ const ServiceToDo = () => {
       </Helmet>
       <section className="container px-4 mx-auto my-12">
         <div className="flex items-center gap-x-3">
-          <h2 className="text-lg font-medium text-gray-800 ">Service To-Do</h2>
+          <h2 className="text-lg font-medium text-gray-800 dark:text-gray-200">Service To-Do</h2>
 
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
             {bookings.length} Booking Requests
@@ -63,13 +62,13 @@ const ServiceToDo = () => {
         <div className="flex flex-col mt-6">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-              <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
+              <div className="overflow-hidden border border-gray-200 dark:border-gray-600 md:rounded-lg">
+                <table className="min-w-full divide-y dark:divide-gray-600 divide-gray-200 ">
                   <thead className="bg-gray-50">
-                    <tr>
+                    <tr className="dark:bg-gray-800 text-gray-500 dark:text-gray-200">
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Image</span>
@@ -78,7 +77,7 @@ const ServiceToDo = () => {
 
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Title</span>
@@ -87,7 +86,7 @@ const ServiceToDo = () => {
 
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Email</span>
@@ -96,14 +95,14 @@ const ServiceToDo = () => {
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         <span>Booking Date</span>
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         <button className="flex items-center gap-x-2">
                           <span>Price</span>
@@ -112,33 +111,30 @@ const ServiceToDo = () => {
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         Location
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         Status
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         Action
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 ">
+                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600">
                     {bookings.length === 0 ? (
                       <tr>
-                        <td
-                          colSpan="6"
-                          className="text-center text-gray-500 py-5"
-                        >
+                        <td colSpan="6" className="text-center py-5">
                           No Data Here
                         </td>
                       </tr>

@@ -3,7 +3,7 @@ import { LuPaintbrush } from "react-icons/lu";
 
 const Testimonial = () => {
   return (
-    <div className="my-6 font-sans max-w-6xl mx-auto">
+    <div className="my-6 font-sans max-w-6xl mx-auto mb-20">
       <div className="text-center pt-14">
         <span className="text-blue-400 bg-gray-100 dark:bg-blue-200 dark:text-gray-950 px-5 py-1 rounded-full">
           <LuPaintbrush className="inline-block mr-2" />
@@ -16,7 +16,7 @@ const Testimonial = () => {
         </h1>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 max-md:gap-12 max-md:justify-center text-center max-md:max-w-lg mx-auto mt-16">
+      <div className="grid md:grid-cols-3 gap-6 max-md:gap-12 px-5 max-md:justify-center text-center max-md:max-w-lg mx-auto mt-16">
         {/* Testimonial 1 */}
         <div className="rounded-md">
           <div className="flex flex-col items-center">

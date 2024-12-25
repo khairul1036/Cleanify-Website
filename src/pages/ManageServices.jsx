@@ -57,9 +57,9 @@ const ManageServices = () => {
       <Helmet>
         <title>Manage Service</title>
       </Helmet>
-      <section className="container px-4 mx-auto pt-12">
+      <section className="container px-4 mx-auto py-12">
         <div className="flex items-center gap-x-3">
-          <h2 className="text-lg font-medium text-gray-800 ">Manage Service</h2>
+          <h2 className="text-lg font-medium text-gray-800 dark:text-gray-200">Manage Service</h2>
 
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
             {myServices.length} Service
@@ -69,13 +69,13 @@ const ManageServices = () => {
         <div className="flex flex-col mt-6">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-              <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
+              <div className="overflow-hidden border border-gray-200 dark:border-gray-600 md:rounded-lg">
+                <table className="min-w-full divide-y dark:divide-gray-600 divide-gray-200 ">
                   <thead className="bg-gray-50">
-                    <tr>
+                    <tr className="dark:bg-gray-800 text-gray-500 dark:text-gray-200">
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Image</span>
@@ -83,7 +83,7 @@ const ManageServices = () => {
                       </th>
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Title</span>
@@ -92,14 +92,14 @@ const ManageServices = () => {
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         <span>CreateAt</span>
                       </th>
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         <button className="flex items-center gap-x-2">
                           <span>Price</span>
@@ -108,23 +108,23 @@ const ManageServices = () => {
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         Location
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right"
                       >
                         Description
                       </th>
 
-                      <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                        Edit
+                      <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right">
+                        Action
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 ">
+                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600 ">
                     {myServices.length === 0 ? (
                       <tr>
                         <td

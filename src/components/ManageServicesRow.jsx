@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { format } from 'date-fns'
 
 const ManageServicesRow = ({ myService, handleDelete }) => {
   const {
@@ -15,33 +16,33 @@ const ManageServicesRow = ({ myService, handleDelete }) => {
   } = myService;
 
   return (
-    <tr>
+    <tr className="dark:bg-gray-800 text-gray-500 dark:text-gray-200">
       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
         <img className="w-12 h-12 rounded-full" src={photoUrl} alt="img" />
       </td>
 
-      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+      <td className="px-4 py-4 text-sm  whitespace-nowrap">
         {title}
       </td>
 
-      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-        {createDate}
+      <td className="px-4 py-4 text-sm  whitespace-nowrap">
+        {format(new Date(createDate), 'P')}
       </td>
 
-      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+      <td className="px-4 py-4 text-sm  whitespace-nowrap">
         ${price}
       </td>
-      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+      <td className="px-4 py-4 text-sm  whitespace-nowrap">
         {location}
       </td>
-      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+      <td className="px-4 py-4 text-sm  whitespace-nowrap">
         {description.substring(0, 20)}...
       </td>
       <td className="px-4 py-4 text-sm whitespace-nowrap">
         <div className="flex items-center gap-x-6">
           <button
             onClick={() => handleDelete(_id)}
-            className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none"
+            className="transition-colors duration-200   hover:text-red-500 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +62,7 @@ const ManageServicesRow = ({ myService, handleDelete }) => {
 
           <Link
             to={`/update/${_id}`}
-            className="text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none"
+            className="transition-colors duration-200   hover:text-yellow-500 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { IoSearchSharp } from "react-icons/io5";
+import NoDataFound from "../components/NoDataFound";
 
 const AllService = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,18 +39,17 @@ const AllService = () => {
           {/* Search Form */}
           <div className="flex flex-col justify-center items-center gap-5">
             <form>
-              <div className="flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+              <div className="flex items-center p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300 dark:bg-gray-800 border-gray-600">
+                <IoSearchSharp className="text-2xl"/>
+
                 <input
-                  className="px-6 py-2 placeholder-gray-500 outline-none focus:placeholder-transparent"
+                  className="px-2 py-2 placeholder-gray-500 bg-white dark:bg-gray-800 outline-none focus:placeholder-transparent"
                   type="text"
                   name="search"
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Enter Service Title"
                   aria-label="Enter Service Title"
                 />
-                <button className="btn px-2 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
-                  Search
-                </button>
               </div>
             </form>
           </div>
@@ -59,7 +60,7 @@ const AllService = () => {
           ) : (
             <div className="grid grid-cols-1 gap-5 md:gap-8 mt-8">
               {services.length === 0 ? (
-                <p>No Data</p>
+               <NoDataFound/>
               ) : (
                 services.map((service) => (
                   <ServiceCard key={service._id} service={service} />

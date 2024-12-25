@@ -33,16 +33,16 @@ export default function Carousel() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Slide image={bgimg1} text="Quick & Reliable Electronics Repair" />
+          <Slide image={bgimg1} text="Reliable, Detailed Cleaning at Your Doorstep" />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
-            text="Fast and Affordable Electronics Repair Services"
+            text="Transform Your Space with Our Professional Cleaning"
           />
         </SwiperSlide>
         <SwiperSlide>
-          <Slide image={bgimg3} text="Get Your Gadgets Running Again" />
+          <Slide image={bgimg3} text="Let Us Do the Cleaning, You Enjoy the Comfort" />
         </SwiperSlide>
       </Swiper>
     </div>
