@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import Carousel from "../components/Carousel";
 import AboutUs from "../components/AboutUs";
+import PopularServices from "../components/PopularServices";
 
 const Home = () => {
   return (
@@ -9,12 +10,9 @@ const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <div>
-        <Carousel/>
-      </div>
-      <div>
-        <AboutUs/>
-      </div>
+      <Carousel />
+      <AboutUs />
+      <PopularServices/>
     </>
   );
 };
