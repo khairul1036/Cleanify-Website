@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center py-3 border-b dark:border-gray-600">
       <div>
-        <Link className="text-2xl font-bold text-blue-500">Fixtronics</Link>
+        <Link className="text-2xl font-bold text-blue-500">Cleanify</Link>
       </div>
       <div>
         <ul className="flex items-center menu menu-horizontal px-1 text-[16px]">
@@ -181,7 +181,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to={"/login"}>
-            <button className="btn bg-blue-600 text-white border-none hover:bg-blue-500">
+            <button className="btn bg-blue-600 text-white border-none hover:bg-amber-500">
               Login
             </button>
           </Link>

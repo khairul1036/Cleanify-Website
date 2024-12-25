@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
+import { FaArrowRight } from "react-icons/fa6";
 
 const Slide = ({ image, text }) => {
   return (
     <div
-      className='w-full bg-center bg-cover h-[38rem]'
+      className='w-full bg-center bg-cover h-72 md:h-[38rem]'
       style={{
         backgroundImage: `url(${image})`,
       }}
@@ -17,9 +18,9 @@ const Slide = ({ image, text }) => {
           <br />
           <Link
             to='/services'
-            className='btn bg-blue-600 text-white border-none hover:bg-blue-500'
+            className='btn bg-blue-600 text-white border-none hover:bg-amber-500'
           >
-            Booked a Service
+            Booked a Service <FaArrowRight className='text-xl'/>
           </Link>
         </div>
       </div>

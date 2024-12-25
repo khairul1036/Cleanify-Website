@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Carousel from "../components/Carousel";
+import AboutUs from "../components/AboutUs";
 
 const Home = () => {
   return (
@@ -10,6 +11,9 @@ const Home = () => {
       </Helmet>
       <div>
         <Carousel/>
+      </div>
+      <div>
+        <AboutUs/>
       </div>
     </>
   );
