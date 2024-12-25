@@ -9,8 +9,13 @@ const PrivateRoute = ({ children }) => {
 
   const location = useLocation()
 
-  if (loading) return <LoadingSpinner />
-  if (user) return children
+  if(loading){
+    return <LoadingSpinner/>
+  }
+
+  if (user && user?.email) {
+    return children;
+  }
   return <Navigate to='/login' state={location.pathname} />
 }
 

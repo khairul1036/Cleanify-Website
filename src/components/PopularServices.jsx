@@ -4,6 +4,7 @@ import PopularServiceCard from "./PopularServiceCard";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import LoadingSpinner from "./LoadingSpinner";
+import NoDataFound from "./NoDataFound";
 
 const PopularServices = () => {
   const [services, setServices] = useState([]);
@@ -46,7 +47,7 @@ const PopularServices = () => {
         {loading ? (
           <LoadingSpinner />
         ) : services.length === 0 ? (
-          <p>No Data Available</p>
+          <NoDataFound/>
         ) : (
           services.map((service) => (
             <PopularServiceCard key={service._id} service={service} />

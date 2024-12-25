@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, NavLink } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
