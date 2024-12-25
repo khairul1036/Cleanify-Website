@@ -11,12 +11,13 @@ import MyBooking from "../pages/MyBooking";
 import ManageServices from "../pages/ManageServices";
 import UpdateService from "../pages/UpdateService";
 import ServiceToDo from "../pages/ServiceToDo";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

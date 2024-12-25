@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ServiceCard from "../components/ServiceCard";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const AllService = () => {
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
+  const { loading, setLoading } = useAuth();
 
   useEffect(() => {
     const fetchAllService = async () => {
-      const { data } = await axiosSecure.get(
-        `/services?search=${search}`
-      );
-      setServices(data);
+      try {
+        setLoading(true); // Set loading state to true before fetching
+        const { data } = await axiosSecure.get(`/services?search=${search}`);
+        setServices(data); // Set the fetched data
+      } catch (error) {
+        console.error("Error fetching services:", error); // Handle error if any
+      } finally {
+        setLoading(false); // Set loading state to false once the request completes
+      }
     };
+
     fetchAllService();
-  }, [search]);
+  }, [search, setLoading]); // Re-run the effect when search changes
 
   return (
     <>
@@ -45,15 +52,19 @@ const AllService = () => {
               </div>
             </form>
           </div>
-          <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {services.length === 0 ? (
-              <p>No Data</p>
+            {loading ? (
+              <LoadingSpinner />
             ) : (
-              services.map((service) => (
-                <ServiceCard key={service._id} service={service} />
-              ))
+              <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {services.length === 0 ? (
+                  <p>No Data</p>
+                ) : (
+                  services.map((service) => (
+                    <ServiceCard key={service._id} service={service} />
+                  ))
+                )}
+              </div>
             )}
-          </div>
         </div>
       </div>
     </>
