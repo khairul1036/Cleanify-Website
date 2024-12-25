@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const SingleServiceDetails = () => {
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   const [service, setService] = useState([]);
@@ -16,7 +16,7 @@ const SingleServiceDetails = () => {
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
 
-  // fetching single data
+  // Fetching single data
   useEffect(() => {
     fetchAllService();
   }, [id]);
@@ -39,7 +39,6 @@ const SingleServiceDetails = () => {
     photoUrl,
     location,
     description,
-    req_count,
   } = service;
 
   // Toggle modal
@@ -47,7 +46,7 @@ const SingleServiceDetails = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  // book now data handle
+  // Book now data handle
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -81,47 +80,55 @@ const SingleServiceDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-      {/* Service Image */}
-      <img
-        referrerPolicy="no-referrer"
-        className="w-full h-64 object-cover rounded-md"
-        src={photoUrl}
-        alt="img"
-      />
+    <div className="max-w-4xl mx-auto  shadow-lg rounded-lg p-6 border-t mt-10">
+      <div className="service-details">
+        {/* Service Image */}
+        <img
+          referrerPolicy="no-referrer"
+          className="w-full h-64 object-cover rounded-lg"
+          src={photoUrl}
+          alt="Service"
+        />
 
-      <div className="mt-4">
-        {/* Service Name */}
-        <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
+        <div className="mt-6">
+          {/* Service Name and Description */}
+          <h2 className="text-3xl font-semibold ">{title}</h2>
+          <p className=" mt-3 text-sm">{description}</p>
 
-        {/* Service Description */}
-        <p className="text-gray-600 mt-2">{description}</p>
+          {/* Service Price */}
+          <p className="mt-4 text-2xl font-semibold">
+            Price: <span className="text-green-600">{`$${price}`}</span>
+          </p>
 
-        {/* Service Provider Information */}
-        <div className="flex items-center mt-4">
-          {/* Provider Image */}
-          <img
-            referrerPolicy="no-referrer"
-            className="w-12 h-12 rounded-full"
-            src={provider?.photo}
-            alt="img"
-          />
-          <div className="ml-3">
-            <p className="font-medium text-gray-800">{provider?.name}</p>
-            <p className="text-sm text-gray-500">{location}</p>
+          {/* Provider Information */}
+          <div className="provider-info mt-6 border-t pt-6">
+            <h3 className="text-xl font-medium ">Service Provider</h3>
+            <div className="flex items-center mt-4">
+              {/* Provider Image */}
+              <img
+                referrerPolicy="no-referrer"
+                className="w-16 h-16 rounded-full object-cover"
+                src={provider?.photo}
+                alt="Provider"
+              />
+              <div className="ml-4">
+                <p className="font-semibold ">{provider?.name}</p>
+                <p className="text-sm ">{location}</p>
+                <p className="text-sm ">Email: {provider?.email}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Book Now Button */}
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={toggleModal}
+              className="w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300"
+            >
+              Book Now
+            </button>
           </div>
         </div>
-
-        {/* Service Price */}
-        <p className="mt-4 text-xl font-semibold text-gray-900">{`$${price}`}</p>
-
-        {/* Book Now Button */}
-        <button
-          onClick={toggleModal}
-          className="mt-6 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600"
-        >
-          Book Now
-        </button>
       </div>
 
       {/* Modal */}
@@ -129,10 +136,8 @@ const SingleServiceDetails = () => {
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
             <div className="flex justify-between">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                Book Service
-              </h2>
-              <button onClick={toggleModal} className="text-xl">
+              <h2 className="text-2xl font-semibold  mb-4">Book Service</h2>
+              <button onClick={toggleModal} className="text-2xl font-semibold ">
                 X
               </button>
             </div>
@@ -143,7 +148,7 @@ const SingleServiceDetails = () => {
                 type="text"
                 value={_id}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Service ID"
               />
 
@@ -152,7 +157,7 @@ const SingleServiceDetails = () => {
                 type="text"
                 value={title}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Service Name"
               />
 
@@ -161,7 +166,7 @@ const SingleServiceDetails = () => {
                 referrerPolicy="no-referrer"
                 className="w-20 h-20 object-cover rounded-md mb-4"
                 src={photoUrl}
-                alt="img"
+                alt="Service Image"
               />
 
               {/* Provider Name */}
@@ -169,44 +174,33 @@ const SingleServiceDetails = () => {
                 type="text"
                 value={provider?.name}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Provider Name"
               />
 
-              {/* Provider Email */}
-              <input
-                type="email"
-                value={provider?.email}
-                disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
-                placeholder="Provider Email"
-              />
-
-              {/* Current User Email */}
+              {/* User Info */}
               <input
                 type="email"
                 value={user?.email}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Your Email"
               />
-
-              {/* Current User Name */}
               <input
                 type="text"
                 value={user?.displayName}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Your Name"
               />
 
-              {/* Service Taking Date */}
+              {/* Date Picker */}
               <div className="mb-4">
-                {/* Date Picker Input Field */}
                 <DatePicker
-                  className="border p-2 rounded-md "
+                  className="w-full p-2 border rounded-md"
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
+                  placeholderText="Select Service Date"
                 />
               </div>
 
@@ -215,9 +209,9 @@ const SingleServiceDetails = () => {
                 className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Your address"
                 name="address"
-              ></input>
+              />
 
-              {/* Special Instruction */}
+              {/* Special Instructions */}
               <textarea
                 className="w-full p-2 border mb-4 rounded-md"
                 name="instructions"
@@ -225,31 +219,23 @@ const SingleServiceDetails = () => {
                 rows="3"
               ></textarea>
 
-              {/* Service Price */}
+              {/* Price */}
               <input
                 type="text"
-                value={`$${service.price}`}
+                value={`$${price}`}
                 disabled={true}
-                className="w-full hover:cursor-not-allowed p-2 border mb-4 rounded-md"
+                className="w-full p-2 border mb-4 rounded-md"
                 placeholder="Price"
               />
 
-              {/* Purchase Button */}
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600"
+                className="w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300"
               >
-                Purchase
+                Confirm Booking
               </button>
             </form>
-
-            {/* Close Modal Button */}
-            <button
-              onClick={toggleModal}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            >
-              &times;
-            </button>
           </div>
         </div>
       )}
