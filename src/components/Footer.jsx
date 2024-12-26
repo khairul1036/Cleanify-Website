@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer max-w-screen-2xl mx-auto">
         <aside>
           <h1 className="text-5xl font-bold text-white">Cleanify</h1>
-          <p className="text-lg md:w-[400px]">
+          <p className="text-lg lg:w-[400px]">
           Cleanify is a website dedicated to providing expert cleaning services, offering convenient scheduling, eco-friendly solutions, and high-quality results for homes and businesses.
           </p>
         </aside>
@@ -65,8 +65,7 @@ const Footer = () => {
       </div>
       <div className="pt-5">
         <p className="text-center border-t border-gray-200 pt-2">
-          Copyright © {new Date().getFullYear()} - All right reserved by ACME
-          Industries Ltd
+          Copyright © {new Date().getFullYear()} - All right reserved by Cleanify
         </p>
       </div>
     </footer>

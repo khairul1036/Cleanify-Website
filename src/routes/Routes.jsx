@@ -83,6 +83,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "*",
+        element: (
+          <ErrorPage/>
+        ),
+      },
     ],
   },
 ]);

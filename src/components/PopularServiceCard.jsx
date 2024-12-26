@@ -17,7 +17,7 @@ const PopularServiceCard = ({ service }) => {
   return (
     <div className="bg-white dark:bg-slate-700 mx-auto p-5 rounded-lg">
       <img
-        className="w-96 h-60 mx-auto object-cover rounded-lg"
+        className="lg:w-96 h-60 mx-auto object-cover rounded-lg"
         src={photoUrl}
         alt="img"
       />
