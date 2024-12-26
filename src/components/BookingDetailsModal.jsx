@@ -118,7 +118,7 @@ const BookingDetailsModal = ({ booking, isOpen, closeModal }) => {
             </p>
             <p>
               <strong className="font-semibold">Booking Date:</strong>{" "}
-              {bookingAt}
+              {format(new Date(bookingAt), "P")}
             </p>
           </div>
         </div>

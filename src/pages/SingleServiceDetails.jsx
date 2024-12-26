@@ -1,11 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const SingleServiceDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -278,14 +277,14 @@ const SingleServiceDetails = () => {
 
                 {/* User Address */}
                 <input
-                  className="w-full p-2 border dark:text-gray-100 dark:border-gray-500 dark:bg-gray-600 border-gray-300 mb-4 rounded-md bg-gray-50"
+                  className="w-full p-2 border text-gray-800 dark:text-gray-100 dark:border-gray-500 dark:bg-gray-600 border-gray-300 mb-4 rounded-md bg-gray-50"
                   placeholder="Write your address"
                   name="address"
                 />
 
                 {/* Special Instructions */}
                 <textarea
-                  className="w-full p-2 border dark:text-gray-100 dark:border-gray-500 dark:bg-gray-600 border-gray-300 mb-4 rounded-md bg-gray-50"
+                  className="w-full p-2 border text-gray-800 dark:text-gray-100 dark:border-gray-500 dark:bg-gray-600 border-gray-300 mb-4 rounded-md bg-gray-50"
                   name="instructions"
                   placeholder="Any special Instructions"
                   rows="3"
