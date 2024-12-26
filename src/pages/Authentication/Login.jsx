@@ -19,7 +19,6 @@ const Login = () => {
       toast.success("Signin Successful");
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
       toast.error(err?.message);
     }
   };

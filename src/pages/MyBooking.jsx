@@ -28,7 +28,7 @@ const MyBooking = () => {
   return (
     <>
       <Helmet>
-        <title>Booked Services</title>
+        <title>Booked Services || Cleanify</title>
       </Helmet>
       <section className="container px-4 mx-auto my-12">
         <div className="flex items-center gap-x-3">
@@ -113,12 +113,12 @@ const MyBooking = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600">
+                  <tbody className="bg-white dark:bg-transparent divide-y divide-gray-200 dark:divide-gray-600">
                     {myBookings.length === 0 ? (
                       <tr>
                         <td
                           colSpan="6"
-                          className="text-center py-5"
+                          className="text-center text-gray-700 dark:text-gray-300 py-5"
                         >
                           No Data Here
                         </td>

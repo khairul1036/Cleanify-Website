@@ -20,7 +20,7 @@ const PopularServices = () => {
         );
         setServices(response.data);
       } catch (error) {
-        console.error("Error fetching services:", error);
+        toast.error(error?.message)
       } finally {
         setLoading(false);
       }

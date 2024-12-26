@@ -28,27 +28,22 @@ const ServiceToDo = () => {
 
   const handleStatusChange = async (e, id, preStatus) => {
     const serviceStatus = e.target.value;
-    console.log(serviceStatus, id, preStatus);
-    // if (preStatus === serviceStatus)
-    //     return toast.error('Not Allowed')
 
     try {
       const { data } = await axiosSecure.patch(`/booked-status-update/${id}`, {
         serviceStatus,
       });
-      console.log(data);
       toast.success(`Status Changed To ${serviceStatus}`);
       fetchBooking();
     } catch (err) {
-      console.log(err);
-      toast.error(err.message);
+      toast.error(err?.message);
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Service ToDo</title>
+        <title>Service ToDo || Cleanify</title>
       </Helmet>
       <section className="container px-4 mx-auto my-12">
         <div className="flex items-center gap-x-3">
@@ -131,10 +126,10 @@ const ServiceToDo = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600">
+                  <tbody className="bg-white dark:bg-transparent divide-y divide-gray-200 dark:divide-gray-600">
                     {bookings.length === 0 ? (
                       <tr>
-                        <td colSpan="6" className="text-center py-5">
+                        <td colSpan="6" className="text-center text-gray-700 dark:text-gray-300 py-5">
                           No Data Here
                         </td>
                       </tr>

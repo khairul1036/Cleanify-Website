@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, NavLink } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
-import LoadingSpinner from "./LoadingSpinner";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -14,6 +13,7 @@ const Navbar = () => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
+
 
   // Apply the selected theme
   useEffect(() => {
@@ -58,7 +58,9 @@ const Navbar = () => {
           {user?.email && (
             <li>
               <details>
-                <summary className="text-gray-600 dark:text-gray-50">Dashboard</summary>
+                <summary className="text-gray-600 dark:text-gray-50">
+                  Dashboard
+                </summary>
                 <ul className="bg-gray-100 dark:bg-gray-800 rounded-t-none p-2 w-40 relative right-1 z-10 top-5">
                   <li>
                     <NavLink
@@ -165,7 +167,10 @@ const Navbar = () => {
         </div>
         {user?.email ? (
           <div className="flex gap-5">
-            <button onClick={logOut} className="relative group text-3xl text-gray-600 dark:text-gray-100">
+            <button
+              onClick={logOut}
+              className="relative group text-3xl text-gray-600 dark:text-gray-100"
+            >
               <IoIosLogOut />
 
               {/* Logout text - hidden by default, shown on hover */}

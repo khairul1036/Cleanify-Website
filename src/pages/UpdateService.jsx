@@ -85,15 +85,14 @@ const UpdateService = () => {
       toast.success("Data Updated Successfully!!!");
       navigate("/manage-services");
     } catch (err) {
-      console.log(err);
-      toast.error(err.message);
+      toast.error(err?.message);
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Update Service</title>
+        <title>Update Service || Cleanify</title>
       </Helmet>
       <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
         <section className=" p-2 md:p-6 mx-auto bg-white dark:bg-gray-800 rounded-md shadow-md ">

@@ -72,7 +72,7 @@ const AddService = () => {
   return (
     <>
       <Helmet>
-        <title>Add Service</title>
+        <title>Add Service || Cleanify</title>
       </Helmet>
       <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
         <section className=" p-2 md:p-6 mx-auto bg-white dark:bg-gray-800 rounded-md shadow-md">

@@ -24,7 +24,7 @@ const AllService = () => {
         const { data } = await axiosSecure.get(`/services?page=${currentPage}&size=${itemsPerPage}&search=${search}`);
         setServices(data); // Set the fetched data
       } catch (error) {
-        console.error("Error fetching services:", error); // Handle error if any
+        toast.error(err?.message)
       } finally {
         setLoading(false); // Set loading state to false once the request completes
       }
@@ -37,13 +37,12 @@ const AllService = () => {
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
   //  handle pagination button
   const handlePaginationButton = (value) => {
-    console.log(value);
     setCurrentPage(value);
   };
   return (
     <>
       <Helmet>
-        <title>Services</title>
+        <title>Services || Cleanify</title>
       </Helmet>
       <div className="px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">
         <div>

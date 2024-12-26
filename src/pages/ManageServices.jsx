@@ -55,7 +55,7 @@ const ManageServices = () => {
   return (
     <>
       <Helmet>
-        <title>Manage Service</title>
+        <title>Manage Service || Cleanify</title>
       </Helmet>
       <section className="container px-4 mx-auto py-12">
         <div className="flex items-center gap-x-3">
@@ -124,12 +124,12 @@ const ManageServices = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600 ">
+                  <tbody className="bg-white dark:bg-transparent divide-y divide-gray-200 dark:divide-gray-600 ">
                     {myServices.length === 0 ? (
                       <tr>
                         <td
                           colSpan="6"
-                          className="text-center text-gray-500 py-5"
+                          className="text-center text-gray-700 dark:text-gray-300 py-5"
                         >
                           No Data Here
                         </td>

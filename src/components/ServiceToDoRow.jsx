@@ -28,7 +28,6 @@ const ServiceToDoRow = ({ booking, handleStatusChange }) => {
     setIsModalOpen(false);
   };
 
-  //   console.log(serviceStatus);
   return (
     <tr className="dark:bg-gray-800 text-gray-500 dark:text-gray-200">
       <td className="px-4 py-4 text-sm whitespace-nowrap">

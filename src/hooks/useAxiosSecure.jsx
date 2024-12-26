@@ -17,7 +17,7 @@ const useAxiosSecure = () => {
         return res;
       },
       async (error) => {
-        console.log(error.response);
+        toast.error(err?.message)
         if (error.response.status === 401 || error.response.status === 403) {
           // logout
           logOut();

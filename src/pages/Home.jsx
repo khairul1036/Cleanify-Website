@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Home || Cleanify</title>
       </Helmet>
       <div data-aos="zoom-in">
         <Carousel />
