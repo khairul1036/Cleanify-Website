@@ -64,7 +64,7 @@ const SingleServiceDetails = () => {
         photo: user?.photoURL,
       },
       provider,
-      instructions,
+      instructions: 'N/A',
       userAddress,
       price,
       location,
