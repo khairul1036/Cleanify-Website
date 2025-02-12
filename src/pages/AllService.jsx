@@ -21,23 +21,40 @@ const AllService = () => {
     const fetchAllService = async () => {
       try {
         setLoading(true); // Set loading state to true before fetching
-        const { data } = await axiosSecure.get(`/services?page=${currentPage}&size=${itemsPerPage}&search=${search}`);
+        const { data } = await axiosSecure.get(
+          `/services?page=${currentPage}&size=${itemsPerPage}&search=${search}`
+        );
         setServices(data); // Set the fetched data
       } catch (error) {
-        toast.error(err?.message)
+        toast.error(err?.message);
       } finally {
         setLoading(false); // Set loading state to false once the request completes
       }
     };
 
     fetchAllService();
-  }, [currentPage,itemsPerPage,search, setLoading]); // Re-run the effect when search changes
+  }, [currentPage, itemsPerPage, search, setLoading]); // Re-run the effect when search changes
 
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
   //  handle pagination button
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
+  };
+
+  // State for sorting option
+  const [sortOption, setSortOption] = useState("");
+
+  // Function to sort products
+  const handleSort = (option) => {
+    let sorted = [...services];
+    if (option === "asc") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (option === "desc") {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    setServices(sorted);
+    setSortOption(option);
   };
   return (
     <>
@@ -47,7 +64,7 @@ const AllService = () => {
       <div className="px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">
         <div>
           {/* Search Form */}
-          <div className="flex flex-col justify-center items-center gap-5">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-5">
             <form>
               <div className="flex items-center p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300 dark:bg-gray-800 border-gray-600">
                 <IoSearchSharp className="text-2xl" />
@@ -62,6 +79,22 @@ const AllService = () => {
                 />
               </div>
             </form>
+
+            {/* Sort Options */}
+            <div className="">
+              <label className="text-black dark:text-gray-300 text-lg font-semibold mr-4">
+                Sort by price:
+              </label>
+              <select
+                className="border p-2 rounded-lg bg-white dark:bg-black text-gray-700 dark:text-gray-200"
+                value={sortOption}
+                onChange={(e) => handleSort(e.target.value)}
+              >
+                <option value="">Select</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+            </div>
           </div>
 
           {/* Display Services */}
@@ -69,10 +102,10 @@ const AllService = () => {
             <LoadingSpinner />
           ) : (
             <div className="grid grid-cols-1 gap-5 md:gap-8 mt-8">
-              {services.length === 0 ? (
+              {services?.length === 0 ? (
                 <NoDataFound />
               ) : (
-                services.map((service) => (
+                services?.map((service) => (
                   <ServiceCard key={service._id} service={service} />
                 ))
               )}
