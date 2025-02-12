@@ -89,8 +89,8 @@ const SingleServiceDetails = () => {
         <title>Service Details || Cleanify</title>
       </Helmet>
       <div className="rounded-lg my-20">
-        <div className="flex flex-col md:flex-row justify-between items-center md:gap-20 bg-blue-50 dark:bg-gray-800 rounded-lg p-5">
-          <div>
+        <div className="flex flex-col lg:flex-row justify-between items-center md:gap-20 bg-blue-50 dark:bg-gray-800 rounded-lg p-5">
+          <div className="lg:w-1/2">
             {/* Service Image */}
             <img
               referrerPolicy="no-referrer"
@@ -100,7 +100,7 @@ const SingleServiceDetails = () => {
             />
           </div>
 
-          <div className="mt-6">
+          <div className="lg:w-1/2 mt-6">
             {/* Service Name and Description */}
             <h2 className="text-3xl font-semibold text-gray-700 dark:text-gray-200">
               {title}

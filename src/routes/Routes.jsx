@@ -12,6 +12,7 @@ import ManageServices from "../pages/ManageServices";
 import UpdateService from "../pages/UpdateService";
 import ServiceToDo from "../pages/ServiceToDo";
 import ErrorPage from "../pages/ErrorPage";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <AllService></AllService>,
       },
       {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
         path: "/add-service",
         element: (
           <PrivateRoute>
@@ -45,17 +50,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: (
-          <PrivateRoute>
-            <SingleServiceDetails/>
-          </PrivateRoute>
-        ),
+        element: <SingleServiceDetails />,
       },
       {
         path: "/my-booking",
         element: (
           <PrivateRoute>
-            <MyBooking/>
+            <MyBooking />
           </PrivateRoute>
         ),
       },
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
         path: "/manage-services",
         element: (
           <PrivateRoute>
-            <ManageServices/>
+            <ManageServices />
           </PrivateRoute>
         ),
       },
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: (
           <PrivateRoute>
-            <UpdateService/>
+            <UpdateService />
           </PrivateRoute>
         ),
       },
@@ -79,15 +80,13 @@ const router = createBrowserRouter([
         path: "/service-to-do",
         element: (
           <PrivateRoute>
-            <ServiceToDo/>
+            <ServiceToDo />
           </PrivateRoute>
         ),
       },
       {
         path: "*",
-        element: (
-          <ErrorPage/>
-        ),
+        element: <ErrorPage />,
       },
     ],
   },
